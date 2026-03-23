@@ -1,0 +1,25 @@
+module top;
+
+reg [3:0] a, b;
+reg [1:0] sel;
+wire [3:0] result;
+wire cout;
+
+ALU uut (
+    .a(a),
+    .b(b),
+    .sel(sel),
+    .result(result),
+    .cout(cout)
+);
+initial begin
+    a = 4'b0101; b = 4'b0011;
+    sel = 2'b00; #10; // ADD
+    sel = 2'b01; #10; // SUB
+    sel = 2'b10; #10; // AND
+    sel = 2'b11; #10; // OR
+
+    $finish;
+end
+
+endmodule
