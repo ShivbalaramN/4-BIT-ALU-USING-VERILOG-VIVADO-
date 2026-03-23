@@ -1,0 +1,27 @@
+module ALU(
+    input [3:0] a,
+    input [3:0] b,
+    input [1:0] sel,
+    output reg [3:0] result,
+    output reg cout
+);
+always @(*) begin
+    case(sel)
+        2'b00: {cout, result} = a + b;       
+        2'b01: {cout, result} = a - b;       
+        2'b10: begin
+            result = a & b;                  
+            cout = 0;
+        end
+        2'b11: begin
+            result = a | b;                  
+            cout = 0;
+        end
+        default: begin
+            result = 4'b0000;
+            cout = 0;
+        end
+    endcase
+end
+
+endmodule
